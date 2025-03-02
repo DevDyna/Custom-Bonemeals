@@ -5,31 +5,21 @@ import java.util.Random;
 public class MathUtil {
 
     /**
-     * 0 (inclusive) and 1 (exclusive)
-     */
-    public static int rndInt() {
-        Random random = new Random();
-        return random.nextInt();
-    }
-
-    /**
-     * 0.0 (inclusive) and 1.0 (exclusive)
-     */
-    public static double rndDouble() {
-        Random random = new Random();
-        return random.nextDouble();
-    }
-
-    /**
-     * 
-     * @param max exclusive
-     * @return random value between [0,max]
+     * 0 (inclusive) and max (exclusive)
      */
     public static int rnd(int max) {
-        if (max <= 0)
-            return 0;
-        return  0 + (rndInt() * (max - 0));
+        Random random = new Random();
+        return random.nextInt(max);
     }
+
+    /**
+     * 0.0 (inclusive) and max (exclusive)
+     */
+    public static double rnd(double max) {
+        Random random = new Random();
+        return random.nextDouble(max);
+    }
+
 
     /**
      * 
@@ -40,18 +30,7 @@ public class MathUtil {
     public static int rnd(int max, int min) {
         if (min > max)
             return min;
-         return  min + (rndInt() * (max - min));
-    }
-
-    /**
-     * 
-     * @param max exclusive
-     * @return random value between [0,max]
-     */
-    public static double rnd(double max) {
-        if (max <= 0)
-            return 0;
-        return  0 + (rndDouble() * (max - 0));
+         return rnd((max - min) + 1) + min;
     }
 
     /**
@@ -63,7 +42,7 @@ public class MathUtil {
     public static double rnd(double max, double min) {
         if (min > max)
             return min;
-        return   min + (rndDouble() * (max - min));
+            return rnd((max - min) + 1) + min;
     }
 
 

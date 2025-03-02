@@ -11,7 +11,6 @@ import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredItem;
 
 public class CreativeTab {
 
@@ -29,8 +28,8 @@ public class CreativeTab {
                     .icon(() -> Items.FERTILIZER.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
 
-                        for (DeferredItem<Item> i : Constants.AllDeferredItem()) {
-                            output.accept(i.get());
+                        for (Item i : Constants.AllItems) {
+                            output.accept(i);
                         }
 
                     }).build());
